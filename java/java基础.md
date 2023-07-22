@@ -1,4 +1,26 @@
-#java基础语法
+### java 基础语法
+- 键盘录入 scanner 类的基本格式
+
+```java
+Scanner sc = new Scanner(System.in);
+int i = sc.nextInt();//这是只能接收键盘录入整形数字的类型
+String j = sc.next();//这样的写法可以接收字符串类型
+
+```
+
+- Switch case 语句基于 jdk 12 的优化
+- 该优化语句省略了 break; 并且不会发生 case 穿透，如果->符号后只有一条语句的话，{ }也可以省略，就像 case2 这样。
+
+```java
+switch (){
+    case 1 -> {
+        System.out.println("1");
+        System.out.println("1");
+    }
+    case 2 -> System.out.println("2");
+}
+
+```
 
 #方法
 
