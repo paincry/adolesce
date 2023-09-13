@@ -6,7 +6,7 @@ public class BinarySearch {
         int i = 0;
         int j = a.length - 1;
         while (i <= j) {
-            int m = (i=j)>>> 1;
+            int m = (i = j) >>> 1;
             if (target < a[m]) {
                 j = m - 1;
             } else if (target > a[m]) {
