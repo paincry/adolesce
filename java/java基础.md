@@ -45,9 +45,7 @@ public class ArrayListDemo1{
         ArrayList<String> list = new ArrayList<>();
     }
 }
-
 ```
-
 ## 集合的体系结构
 
 ### 单列集合
@@ -68,6 +66,23 @@ public class ArrayListDemo1{
 int index = (数组长度 - 1) & 哈希值;
 ```
 - 创建默认 16 个数组，新的元素存储在老元素的下方形成链表，数组存储的数据 x>16×0.75 会自动扩容，如果数组>=64&&链表>=8，那么链表会自动变成红黑树。
+- 在类中重写 Hashcod 和 equls 方法
+#### TreeSet
+- 底层是红黑树，可以将元素升序排列
+- 如果要输出自定义类，需要实现 comparable 接口，里面只有一个抽象方法 comparaTo。
+	- 返回值如果是负数存左边，返回值是正数存右边，返回值是 0 就说明元素已存在
+
+##### 集合的使用方法
+1. 如果想要集合中的元素可重复
+	- 用 ArrayList 集合，基于数组的。
+2. 如果想要集合中的元素可重复，而且当前的增删操作明显多于查询
+	- 用 LinkedList 集合，基于链表的
+3. 如果想对集合中的元素去重
+	- 用 HashSet 集合，基于哈希表的。
+4. 如果想对集合中的元素去重，而且保证存取顺序
+	- 用 LinkedHashSet 集合，基于哈希表和双链表，效率低于 HashSet。
+5. 如果想对集合中的元素进行排序
+	- 用 TreeSet 集合，基于红黑树。后续也可以用 List 集合实现排序
 
 
 ## 集合的遍历方式
@@ -98,7 +113,7 @@ for(String s : coll){
 
 ### Lambda 表达式遍历
 - Jdk 8 之后才出现的一种新的遍历方式
-
+- 底层就是增强 for 遍历
 ```java
 //forEach是一个接口，底层其实也是遍历了集合然后传递给accept方法，这行代码的本身其实是匿名内部类简化之后的结果
 coll.forEach(s -> System.out.println(s));
