@@ -126,6 +126,26 @@ coll.forEach(s -> System.out.println(s));
 
 
 ### 双列集合
+- 就是双列的集合，一列是键，一列是值，一一对应。通常称为键值对
+
+
+#### Map
+- Map 集合是所有双列集合的父类，是一个接口。
+- 在集合中，map 集合有两个特殊的方法来判断键是否存在和值是否存在。
+
+
+#### Map 集合的遍历方式
+- 通过键找值
+```java
+//keySet就是一个Set单列集合
+Set<String> keys = map.keySet();
+//遍历单列结合Set获取每一个键
+for (String key : keys) {
+    //利用map集合中的键get到对应的值value
+	String value = map.get(key);
+	System.out.println(key + "=" + value);
+} 
+```
 
 
 
