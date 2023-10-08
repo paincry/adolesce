@@ -147,8 +147,21 @@ for (String key : keys) {
 } 
 ```
 
+- 通过键值对对象直接进行遍历
+```java
+//通过entrySet这个方法直接获取map中的所有键值对对象
+Set<Map.Entry<String, String>> entries = map.entrySet();
+//遍历entries这个集合
+for(Map.Entry<String, String> entry : entries){
+	String key = entry.getKey();
+	String value = entry.getValue();
+	System.out.println(key + "=" + value);
+}
+```
 
 
+### Stream 流
+- 结合了 Lambda 表达式，简化集合和数组的操作
 
 ### 集合和数组的区别
 - 数组的长度是固定的，集合可以自动扩容
@@ -258,5 +271,8 @@ public class stu{
 - 当我们在一个继承关系中发现，有部分子类有共同的特性，但是又不满足所有子类，这个时候，我们就可以对这个共同的特性写一个接口。接口同样也是抽象的，当我们子类在进行调用的时候必须要进行接口里方法的重写。
 
 
-
+### 方法引用
+- 把已经存在的方法拿过来用，当做函数式接口中抽象方法的方法体。
+-  ::  双冒号符号是方法引用中的特殊符号。
+- 这句话很抽象，从表面上看就是将方法放在参数的位置来用，需要满足一定的条件。
 
