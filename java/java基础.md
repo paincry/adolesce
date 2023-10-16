@@ -358,22 +358,56 @@ fr.close();
 ### 高级流
 
 #### 缓冲流
-
+- 输入流和输出流分别自带 8192 字节大小 (8 KB)的缓冲区，在缓冲区之前由内存进行数据的传输，速度较快，提升了传输效率
+- 字节缓冲流的缓冲大小为 8kb，字符缓冲流的缓冲大小为 16kb
 ##### 字节缓冲流
-###### 字节缓冲输入流 BufferedInputStream
-
-###### 字节缓冲输出流BufferedOutputStream
+- 字节缓冲输入流 BufferedInputStream
+- 字节缓冲输出流 BufferedOutputStream
 
 ##### 字符缓冲流
+- 字符缓冲输入流 BufferedReader
+	- 特有方法，读取一行数据，如果没有数据可读了，会返回 null
+```java
+public String readLine()
+```
 
-###### 字符缓冲输入流BufferedReader
-
-###### 字符缓冲输出流BufferedWriter
-
+- 字符缓冲输出流 BufferedWriter
+	- 特有方法，可以实现跨平台换行，Mac 换行，linux 换行，windows 换行
+```java
+public void newLine()
+```
 
 
 #### 转换流
+- 属于字符流的一种高级流
+	- 转换输入流 InputStreamReader
+	- 转换输出流 OutPutStreamWriter
+- 转换流的出现是为了解决不同编码方式在我们读写的过程当中不出现乱码的情况，在 jdk 11 之后做了优化，淘汰了这个高级流
+	- 如果我们需要将本地文件中的 GBK 文件，转成 UTF-8 输出：
+```java
+InputStreamReader isr = 
+	new InputStreamReader(new FileInputStream("xx\\xx.txt"), "GBK");
+OutputStreamWriter osw = 
+	new OutputStreamWriter(new FileOutputStream("xx\\xx.txt"), "UTF-8");
+int b;
+while((b = isr.read()) != -1){
+	osw.write(b);
+}
+osw.close();
+isr.close();
+```
 
+- 优化后的方案
+```java
+FileReader fr = new FileReader("xx\\xx.txt", Charset.forName("GBK"));
+FileWriter fw = new FileWriter("xx\\xx.txt", Charset.forName("UTF-8"));
+int b ;
+while ((b = fr.read()) != -1){
+	fw.write(b);
+}
+fw.close();
+fr.close();
+```
 #### 序列化流
 
 #### 打印流
