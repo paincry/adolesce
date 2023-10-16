@@ -297,7 +297,7 @@ public class stu{
 
 
 
-### IO 流
+## IO 流
 1. 存储和读取数据的解决方案
 	- I：input
 	- O：output
@@ -317,6 +317,11 @@ public class stu{
 			- 以上方法都是抽象的，不能直接创建，在 java 中需要 new 实现类
 
 
+
+### 基本流
+ 
+#### 字节流输入文件 FileInputStream
+
 #### 字节流输出文件 FileOutputStream
 1. 创建字节流输出流对象
 	- 参数是字符串表示的路径或者 File 对象都可以
@@ -326,3 +331,54 @@ public class stu{
 	- Write 方法的参数是整数，实际上写道本地文件中的是整数在 ASCII 上对应的字符
 2. 释放资源
 	- 每次使用完流之后都要释放资源
+
+
+#### 字符输入流 FileReader
+
+```java
+//创建对象
+FileReader fr = new FileReader("???\\??.text");
+//创建一个数组，长度为2代表一次只读取两个数组
+char [] chars = new char[2];
+int len;
+//read()读取的返回值是十进制数字，read(chars)就是将返回值强转成字符然后放到数组中
+whlie((len = fr.read(chars)) != -1){
+	//把数组中的数据变成字符串在进行打印
+	System.out.print(new String(chars, 0, len));
+}
+//释放资源
+fr.close();
+
+```
+
+
+#### 字符输出流 FileWriter
+
+
+### 高级流
+
+#### 缓冲流
+
+##### 字节缓冲流
+###### 字节缓冲输入流 BufferedInputStream
+
+###### 字节缓冲输出流BufferedOutputStream
+
+##### 字符缓冲流
+
+###### 字符缓冲输入流BufferedReader
+
+###### 字符缓冲输出流BufferedWriter
+
+
+
+#### 转换流
+
+#### 序列化流
+
+#### 打印流
+
+#### 压缩流
+
+#### Commons-io
+
