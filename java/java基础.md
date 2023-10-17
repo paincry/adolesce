@@ -409,9 +409,15 @@ fw.close();
 fr.close();
 ```
 #### 序列化流
-
+- 反序列化流 ObjectInputStream (对象操作输入流)
+	- 把文件中的对象读到程序当中
+- 序列化流 ObjectOutputStream (对象操作输出流)
+	- 把 java 的对象写道本地文件中
+	- 序列化流需要注意的是对象要实现 Serializable 接口，并且加上版本号 serialVersionUID
 #### 打印流
-
+- PrintStream 字节打印流
+- PrintWriter 字符打印流
+- 和 C 语言的输出语句有类似的地方，我们每天写的输出语句就是打印流。
 #### 压缩流
 
 #### Commons-io
