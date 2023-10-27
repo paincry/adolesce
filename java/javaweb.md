@@ -89,8 +89,17 @@ var Str = "Hello String"
 
 #### JSON
 ##### JSON 基础语法
-
-
+- var 变量名 = ‘ { “key 1” :  value 1,  "key 2" : value 2 } ’;
+- var userStr = ' { "name" : "Jerry" , "age": 18,} ';
+- 现在 userStr 就是一个字符串，我们不能使用 userStr. name 的方式来获取到 name 的变量
+	使用 JSON. parse 方法将 JSON 字符串转为 JS 对象
+```JavaScript
+var jsObject = JSON.parse(userStr);
+```
+- 使用 JSON. stringify 方法可以将 JS 对象转为 JSON 字符串
+```JavaScript
+var jsonStr = JSON.stringify(jsObject);
+```
 
 #### BOM
 ##### 属性
