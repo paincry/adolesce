@@ -77,11 +77,11 @@ var Str = "Hello String"
 
 
 ### JSON
-#### JSON 基础语法
-- var 变量名 = ‘ { “key 1” :  value 1,  "key 2" : value 2 } ’;
-- var userStr = ' { "name" : "Jerry" , "age": 18,} ';
-	- 此时 userStr 就是一个字符串，我们不能使用 userStr. name 的方式来获取到 name 的变量
-		使用 JSON. parse 方法将 JSON 字符串转为 JS 对象
+- #### JSON 基础语法
+	- var 变量名 = ‘ { “key 1” :  value 1,  "key 2" : value 2 } ’;
+	- var userStr = ' { "name" : "Jerry" , "age": 18,} ';
+		- 此时 userStr 就是一个字符串，我们不能使用 userStr. name 的方式来获取到 name 的变量
+			使用 JSON. parse 方法将 JSON 字符串转为 JS 对象
 ```JavaScript
 var jsObject = JSON.parse(userStr);
 ```
@@ -93,6 +93,8 @@ var jsonStr = JSON.stringify(jsObject);
 ### BOM
 - 浏览器对象模型，JavaScript 将浏览器的各个部分封装成对象允许 JavaScript 与浏览器对话
 	- #### Window：浏览器窗口对象
+		- ##### 获取：
+			- window. 方法
 		- ##### 属性
 			- history
 			- location
@@ -104,13 +106,52 @@ var jsonStr = JSON.stringify(jsObject);
 			- setInterval（）：按照指定周期来调用函数或表达式（毫秒）。
 			- setTimeout（）：在指定时间后来调用函数或表达式 （毫秒）。
 	- #### Location：地址栏对象
-		- 获取：
+		- ##### 获取 ：
 			- Location. 属性；
-		- 属性：
+		- ##### 属性 ：
 			- href：设置或返回完整的 URL。
 
 ### DOM
+- 文档对象模型，将标记语言的各个组成部分封装为对应的对象：
+	常见的对象模型有
+	-  Document：整个文档对象
+	-  Element：元素对象
+	-  Attribute：属性对象
+	-  Text：文本对象
+	-  Comment：注释对象
+- JavaScript 通过 DOM 就可以对 HTML 进行操作：
+	- 改变 HTML 元素的内容
+	- 改变 HTML 元素的样式（CSS）
+	- 对 HTML DOM 事件作出反应
+	- 添加和删除 HTML 元素
 
-##### 属性
 
-##### 方法
+## 事件监听
+- ### 事件绑定
+	- #### 方式一
+		- 通过 HTML 标签中的事件属性进行绑定
+	- #### 方式二
+		- 通过 DOM 元素属性绑定
+```JavaScript
+<input type = "button" onclick = "on()" value = "按钮1">
+
+<script>
+	function on (){
+		alert('我被点击了');
+	}
+</script>
+```
+
+```JavaScript
+<input type = "button" id = "btn" value = "按钮2">
+
+<script>
+	document.getElementByID('btn').onclick = function(){
+		alert('我被点击了');
+	}
+</script>
+```
+
+
+
+# Vue
