@@ -155,3 +155,55 @@ var jsonStr = JSON.stringify(jsObject);
 
 
 # Vue
+- Vue 是一个基于 MVVM 模型的前端 js 框架。
+- 新建 HTML 页面，引入 Vue. js 文件
+```JavaScript
+<script  src = "js/vue.js"> </script>
+```
+- 在 JS 代码区域，创建 Vue 核心对象，定义数据类型
+```JavaScript
+<script>
+	//定义vue对象
+	new Vue({
+		el: "#app", //vue接管的区域
+		data: {
+			message: "Hello Vue"
+		}
+	})
+</script>
+```
+- 编写试图
+```JavaScript
+<div id = "add">
+	<input type = "text" v-model="message">
+	{{ message }}
+</div>
+```
+
+
+
+- ## Vue 常用命令
+	- 自己查阅
+
+
+
+
+- ## Vue 生命周期
+	- Vue 对象从创建到销毁的整个过程。
+		一共有八个阶段，每触发一个生命周期事件都会自动执行一个生命周期方法（钩子）
+
+### 八个阶段
+1. beforeCreate       (创建前)
+2. created              （创建后）
+3. beforeMount      (载入前)
+4. **mounted**           **(挂载完成)**
+5. beforeUpdate  （更新前）
+6. updated           （更新后）
+7. beforeDestroy （销毁前）
+8. destroyed        （销毁后）
+	- 重点关注一个阶段 mounted：挂载完成，Vue 初始化成功，HTML 页面渲染成功，发送请求获取数据
+
+## Ajax
+- 作用
+	- 数据交换：给服务器发送请求，并获取服务器响应的数据。
+	- 异步交互：可以在不重新加载整个页面的情况下，与服务器交换数据并跟新部分网页的技术。
