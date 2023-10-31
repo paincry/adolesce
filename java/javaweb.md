@@ -207,3 +207,36 @@ var jsonStr = JSON.stringify(jsObject);
 - 作用
 	- 数据交换：给服务器发送请求，并获取服务器响应的数据。
 	- 异步交互：可以在不重新加载整个页面的情况下，与服务器交换数据并跟新部分网页的技术。
+
+### Axios
+- Axios 对 Ajax 进行了封装，简化书写，快速开发。
+- [Axios 官网]( https://www.axios-http.cn )
+
+
+## Vue 组件库 Element
+- 使用 Element 组件，直接进入 Element 官网 [官网 | Element](https://element.eleme.cn/#/zh-CN/component/quickstart) 复制粘贴想要的组件代码然后再进行相应的调整
+	- ### 常用的组件：
+		- Table 表格
+		- Pagination 分页
+		- Dialog 对话框
+		- Form 表单
+
+## Vue 路由
+- ### Vue Router
+	- Vue Router 是 Vue 的官方路由
+	- 组成
+		- VueRouter：路由器类，根据路由请求在路由试图中动态渲染选中的组件
+		- router -Link：请求链接组件，浏览器会解析成
+		- router - view：动态试图组件，用来渲染展示与路由路径对应的组件
+
+
+## 打包部署
+- Vue 打包会默认到 dist 文件夹
+
+### 部署
+- #### Nginx
+	- Nginx 是一款轻量级的 Web 服务器。
+	- [Nginx官网](https://nginx.org)
+- 将打包好的 dist 目录下的文件复制到 nginx 安装目录的 html 目录下
+	- nginx 服务器默认占用 80 端口号，如果端口被占用了，可以在 nginx. conf 中修改端口号。
+		如果要查看是谁占用了端口可以在 cmd 中输入 netstat -ano | findStr 80。
