@@ -182,15 +182,15 @@ var jsonStr = JSON.stringify(jsObject);
 
 
 
-- ## Vue 常用命令
-	- 自己查阅
+## Vue 常用命令
+-  自己查阅
 
 
 
 
-- ## Vue 生命周期
-	- Vue 对象从创建到销毁的整个过程。
-		一共有八个阶段，每触发一个生命周期事件都会自动执行一个生命周期方法（钩子）
+## Vue 生命周期
+- Vue 对象从创建到销毁的整个过程。
+	一共有八个阶段，每触发一个生命周期事件都会自动执行一个生命周期方法（钩子）
 
 ### 八个阶段
 1. beforeCreate       (创建前)
@@ -240,3 +240,28 @@ var jsonStr = JSON.stringify(jsObject);
 - 将打包好的 dist 目录下的文件复制到 nginx 安装目录的 html 目录下
 	- nginx 服务器默认占用 80 端口号，如果端口被占用了，可以在 nginx. conf 中修改端口号。
 		如果要查看是谁占用了端口可以在 cmd 中输入 netstat -ano | findStr 80。
+
+
+
+
+# Maven
+
+## 依赖配置
+- 依赖：指当前项目运行所需要的 jar 包，一个项目中可以引入多个依赖
+```java
+<dependencies>  
+    <dependency>        
+	    <groupId>ch.qos.logback</groupId>  
+        <artifactId>logback-classic</artifactId>  
+        <version>1.4.8</version>  
+    </dependency>
+</dependencies>
+```
+- 在 pom. xml 中编写 dependencies 标签，
+	在 dependencies 标签中使用 dependency 标签来引入坐标
+		dependency 中的 groupId artifactId version 就是坐标
+
+## 依赖传递
+### 特性
+- 直接依赖：在当前项目中通过依赖配置建立的依赖关系
+- 间接依赖：被依赖的资源如果依赖其他资源，当前项目也会间接依赖其他资源
