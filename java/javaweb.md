@@ -246,7 +246,9 @@ var jsonStr = JSON.stringify(jsObject);
 
 # Maven
 
-## 依赖配置
+## 依赖
+
+### 依赖配置
 - 依赖：指当前项目运行所需要的 jar 包，一个项目中可以引入多个依赖
 ```java
 <dependencies>  
@@ -261,7 +263,53 @@ var jsonStr = JSON.stringify(jsObject);
 	在 dependencies 标签中使用 dependency 标签来引入坐标
 		dependency 中的 groupId artifactId version 就是坐标
 
-## 依赖传递
-### 特性
+### 依赖传递
+#### 依赖传递是一种自带的特性
 - 直接依赖：在当前项目中通过依赖配置建立的依赖关系
 - 间接依赖：被依赖的资源如果依赖其他资源，当前项目也会间接依赖其他资源
+
+### 依赖范围
+- 默认情况下可以在该项目的任何地方使用
+	可以通过 scope 标签设置依赖的作用范围
+
+|scope 值|主程序|测试程序|打包|
+|:-:|:-:|:-:|:-:|
+|compile (默认) | Y | Y | Y 
+|test| - | Y | - 
+|provided | Y | Y| - 
+|runtime | - | Y | Y 
+
+ 
+
+### 排除依赖
+- 如果我们当前项目不想要其他资源的依赖，可以使用排除依赖
+	主动断开依赖的资源，被排除的资源无需指定版本
+
+```java
+<exclusions>
+	<exclusion>
+		 <groupId>排除的资源</groupId>  
+        <artifactId>排除的资源</artifactId>  
+	</exclusion>
+</exclusions>
+```
+
+
+## Maven 生命周期
+- Maven 有三套不同的生命周期。分别是：
+	- clean
+	- default
+	- site
+
+- 在这三套生命周期中我们常用的有五个：
+	- clean 清理
+	- compile 编译
+	- test 测试
+	- package 打包
+	- install 安装
+- 这些生命周期的执行都是由 Maven 中的插件完成的
+
+
+
+
+# Spring
