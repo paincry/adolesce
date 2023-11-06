@@ -334,4 +334,18 @@ var jsonStr = JSON.stringify(jsObject);
 # Web 后端开发
 
 ## 请求响应
+ 1. 简单参数
+	 - 定义方法形参，请求变量名与形参变量名一致。
+	 - 如果不一致通过@RequestParam 手动映射。
+ 2. 实体参数
+	 - 请求参数名，与实体对象的属性名一致，会自动接收封装
+ 3. 数组集合参数
+	 - 数组：请求参数名与数组名一致，直接封装
+	 - 集合：请求参数名与集合名一致，@RequestParam 绑定关系
+ 4. 日期参数
+	 - @DataTimeFormat
+ 5. JSON 参数
+	 - @RequestBody
+ 6. 路径参数
+	 - PathVariable
 
