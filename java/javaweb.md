@@ -337,15 +337,91 @@ var jsonStr = JSON.stringify(jsObject);
  1. 简单参数
 	 - 定义方法形参，请求变量名与形参变量名一致。
 	 - 如果不一致通过@RequestParam 手动映射。
+ 
  2. 实体参数
 	 - 请求参数名，与实体对象的属性名一致，会自动接收封装
+ 
  3. 数组集合参数
 	 - 数组：请求参数名与数组名一致，直接封装
 	 - 集合：请求参数名与集合名一致，@RequestParam 绑定关系
+ 
  4. 日期参数
 	 - @DataTimeFormat
+ 
  5. JSON 参数
 	 - @RequestBody
+ 
  6. 路径参数
 	 - PathVariable
 
+### @ResponseBody
+- 位于 Controller 类上/方法上
+- 将方法返回值直接响应，若返回值类型是实体对象或集合，转 JSON 响应格式
+
+### 统一响应结果
+Result（code、msg、data）
+
+
+
+## 三层架构
+
+- controller：控制层，接收前端发送的请求，对请求进行处理，并响应数据。
+- service：业务逻辑层，处理具体的业务逻辑。
+- dao：数据访问层（Data Access Object），负责数据访问操作，包括数据的曾删改查。
+- 高内聚低耦合
+
+
+### IOC & DI
+
+- @Component
+	- 将当前类交给 IOC 容器管理，称为 IOC 容器中的 Bean
+		- @Component 的衍生注解：
+			@Controller：标注在控制器上
+			@Service：标注在业务类上
+			@Repository：标注在数据访问类上
+
+- @Autowired
+	- 运行时，IOC 容器会提供该类型的 Bean 对象，并赋值给该变量——依赖注入
+		- @Autowired 默认安装类型自动装配，如果同类型的 bean 存在多个：
+			@Primary
+			@Autowired+@Qualifier（“bean 的名称”）
+			@Resource（name=“bean 的名称”）
+
+- @Resource 与@Autowired 的区别
+	@Autowired 是 Spring 框架提供的注解，而@Resource 是 JDK 提供的注解。
+	@Autowired 默认是按照类型注入，而@Resource 是按照名称进行注入
+
+
+## MySQL
+
+### 多表查询
+- 笛卡尔积
+#### 内连接
+- 隐式内连接：
+	select 字段列表 from 表1，表2 where 条件;
+- 显式内连接：
+	select 字段列表 from 表 1 inner join 表 2 on 连接条件
+
+
+#### 外连接
+- 左外连接：
+	select 字段列表 from 表1 left outer join 表2 on 连接条件；
+- 右外连接：
+	select 字段列表 from 表 1 right outer join 表 2 on 连接条件；
+
+#### 嵌套查询
+- select * from 表1 where column1 = （select column1 from 表2）； 
+
+### 事务
+- 事务是一组操作的集合，要么同时成功要么同时失败。
+- 开启事务：start transaction；
+- 提交事务：commit；
+- 回滚事务：rollback；
+
+事务的四大特性 ACID：
+- 原子性：事务是不可分割的最小单元，要么全部成功，要么全部失败；
+- 一致性：事务完成是必须使所有的数据都保持一致状态；
+- 隔离性：数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行；
+- 持久性：事务一旦提交或回滚，它对数据库中的数据的改变就是永久的；
+
+### 索引
